@@ -6,6 +6,7 @@ import play.api.mvc._
 object Application extends Controller {
 
   def index1 = Action {
+    var myVar1 : String = "10";
     try
     {
       throw new Exception("Exception thrown");
