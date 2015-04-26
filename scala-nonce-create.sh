@@ -6,7 +6,6 @@ TEST_SCALA_FILE="$PATH_TO_SCALA_FILE/test.txt"
 PATH_TO_ROUTES="/Users/takipimbp1/temp-hod/site/scala-play/conf"
 ROUTES_FILE="$PATH_TO_ROUTES/routes"
 TEST_ROUTES_FILE="$PATH_TO_ROUTES/test.txt"
-#JAVA_OPTS="-agentlib:TakipiAgent"
 CURRENT_NAME="index1"
 SITE="http://localhost:9000/"
 
@@ -68,6 +67,7 @@ function change()
 function run_scala_program
 {
   curl -i $SITE
+  sleep 10
 }
 
 # This function clears the java file before execution
@@ -99,12 +99,10 @@ function run()
 
 function main()
 {
-  OPTION="$1"
-  TIMES="$2"
-  A="$3"
+  TIMES="$1"
+  A="$2"
   check_if_entered_name $A
   FIRST_NAME=$CURRENT_NAME
-#  option $OPTION
   for i in `seq 1 $TIMES`;
   do
     echo run number: $i
