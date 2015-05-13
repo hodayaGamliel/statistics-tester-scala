@@ -11,6 +11,15 @@ SITE="http://localhost:9000/"
 
 set -x
 
+# This function get a message and write it to log file
+function log()
+{
+  DATE=`date +%Y-%m-%d-%H-%M-%S`
+  MESSAGE=$1
+
+  echo $DATE $MESSAGE  >> ./scala_nonce_create.log
+}
+
 # This function get int value (number from the "cuurent name") and return this number+1
 function counter()
 {
@@ -97,12 +106,29 @@ function run()
   run_scala_program
 }
 
+# This function summarize this script result
+function summarize()
+{
+  TIMES="$1"
+  log "On your dashboard should be appear"
+
+  if [ $CURRENT_NAME == "index1" ]; then
+    log "Big nonce - change the method name"
+    log "$TIMES times different exceptions throwExcep1-$TIMES"
+  elif [ $CURRENT_NAME == "myVar1" ];then
+    log "Small nonce - change variable name"
+    log "$TIMES times the same exception - myVar1-$TIMES"
+  fi
+}
+
+
 function main()
 {
   TIMES="$1"
   A="$2"
   check_if_entered_name $A
   FIRST_NAME=$CURRENT_NAME
+  summarize $TIMES
   for i in `seq 1 $TIMES`;
   do
     echo run number: $i
