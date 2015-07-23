@@ -1,7 +1,9 @@
-# statistics-tester-scala
+#statistics-tester-scala
 
-run :
-====
+Usage
+=====
+
+run:
 
 sudo ./activator run -J-agentlib:TakipiAgent
 
